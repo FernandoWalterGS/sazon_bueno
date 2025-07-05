@@ -1,0 +1,67 @@
+<div class="min-h-screen bg-background flex items-center justify-center">
+  <div class="max-w-lg w-full bg-white rounded-lg shadow-lg p-8">
+    <h2 class="text-3xl font-bold text-center text-secondary mb-8">Crear una Cuenta</h2>
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="mb-5">
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+          <input
+            type="text"
+            id="name"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+            formControlName="name"
+            placeholder="Tu Nombre"
+          />
+          <div *ngIf="accountForm.get('name')?.invalid && accountForm.get('name')?.touched" class="text-red-600 text-sm mt-1">
+            El nombre es obligatorio.
+          </div>
+        </div>
+        <div class="mb-5">
+          <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Correo Electrónico</label>
+          <input
+            type="email"
+            id="username"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+            formControlName="username"
+            placeholder="nombre@ejemplo.com"
+          />
+          <div *ngIf="accountForm.get('username')?.invalid && accountForm.get('username')?.touched" class="text-red-600 text-sm mt-1">
+            El correo no es válido.
+          </div>
+        </div>
+      </div>
+      <div class="mb-5">
+        <label for="date" class="block mb-2 text-sm font-medium text-gray-900">Fecha de Nacimiento</label>
+        <input
+          type="date"
+          id="date"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+          formControlName="date_of_birth"
+        />
+      </div>
+      <div class="mb-5 relative">
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
+        <input
+          [type]="viewPassword ? 'text' : 'password'"
+          id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+          formControlName="password"
+          placeholder="••••••••"
+        />
+        <button type="button" (click)="changeViewPassword()" class="absolute inset-y-0 right-0 flex items-center pr-3 pt-6">
+          <ng-icon [name]="viewPassword ? 'heroEyeSlash' : 'heroEye'" size="18px" class="text-gray-500"></ng-icon>
+        </button>
+        <div *ngIf="accountForm.get('password')?.invalid && accountForm.get('password')?.touched" class="text-red-600 text-sm mt-1">
+          La contraseña debe tener 8+ caracteres, mayúsculas, minúsculas y números.
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="w-full text-secondary bg-primary hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        [disabled]="!accountForm.valid"
+      >
+        Crear Cuenta
+      </button>
+    </form>
+  </div>
+</div>

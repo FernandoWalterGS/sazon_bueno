@@ -1,0 +1,74 @@
+<div class="relative overflow-x-auto sm:rounded-lg">
+  <div class="flex justify-end my-2 items-center gap-3">
+    <input
+      type="text"
+      nueva
+      placeholder="Nueva dificultad"
+      class="border-none rounded"
+      name="description"
+      [(ngModel)]="newDifficulty"
+    />
+    <button
+      class="flex p-2 bg-negro-sazon text-white rounded hover:opacity-90 items-center"
+      (click)="addDifficulty()"
+    >
+      <ng-icon name="heroPlus" size="20"></ng-icon>
+      Agregar
+    </button>
+  </div>
+  <table class="w-full text-sm text-center text-gray-500 bg-white rounded-md">
+    <thead class="text-xs text-gray-700 uppercase">
+      <tr class="bg-black text-gray-100">
+        <th scope="col" class="px-6 py-3">Id</th>
+        <th scope="col" class="px-6 py-3">Nombre</th>
+        <th scope="col" class="px-6 py-3">Fecha</th>
+        <th scope="col" class="px-6 py-3">Hora</th>
+        <th scope="col" class="px-6 py-3">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of difficulties; track $index) {
+
+      <tr class="border-b border-gray-200 hover:bg-gray-100">
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+        >
+          {{ item.id }}
+        </th>
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+        >
+          {{ item.name }}
+        </th>
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+        >
+          {{ item.createdAt | date : "shortDate" }}
+        </th>
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+        >
+          {{ item.createdAt | date : "shortTime" }}
+        </th>
+
+        <td class="px-6 py-4">
+          <div
+            class="flex gap-3 justify-center"
+            (click)="deleteDificulty(item.id)"
+          >
+            <ng-icon
+              name="heroTrash"
+              size="20"
+              class="text-red-500 cursor-pointer hover:opacity-80"
+            ></ng-icon>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

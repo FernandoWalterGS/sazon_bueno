@@ -1,0 +1,19 @@
+<div class="h-screen flex flex-col justify-center items-center">
+  <div class="w-full bg-amarillo-sazon h-1/2"></div>
+  <div class="w-full bg-negro-sazon h-1/2"></div>
+
+  <div class="absolute">
+    <div class="bg-negro-sazon w-[330px] py-5 flex justify-center rounded-t-md">
+      <a routerLink="/">
+        <img
+          class="w-28"
+          src="../../../assets/resources/logo_oficial.svg"
+          alt=""
+        />
+      </a>
+    </div>
+    <div class="w-[330px] p-7 shadow bg-white rounded-md">
+      <router-outlet />
+    </div>
+  </div>
+</div>

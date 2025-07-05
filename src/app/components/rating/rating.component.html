@@ -1,0 +1,20 @@
+<div
+  class="text-center mt-3 shadow-md p-5 text-amarillo-sazon rounded-md bg-white"
+>
+  <p class="text-negro-sazon">¿Qué te pareció esta receta?</p>
+  <div class="flex justify-center gap-8 mt-3">
+    @for (item of itemRating; track $index) {
+
+    <div (click)="capturaRating(item.rating)">
+      <ng-icon
+        name="bootstrapStarFill"
+        size="22"
+        class="cursor-pointer"
+        [ngClass]="item.active ? 'text-amarillo-sazon' : 'text-gray-300'"
+      />
+      <p class="text-[11px] text-negro-sazon">{{ item.text }}</p>
+    </div>
+
+    }
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="mt-[140px]">
+  <table class="mx-auto">
+    <tr class="bg-amarillo-sazon">
+      @for (item of titles; track $index) {
+
+      <th class="px-5">{{ item }}</th>
+
+      }
+    </tr>
+
+    <tr>
+      @for (item of list; track $index) {
+
+      <td>{{ item.id }} </td>
+      <td>{{ item.name }} </td>
+      <td>{{ item.description }} </td>
+      }
+    </tr>
+  </table>
+</div>

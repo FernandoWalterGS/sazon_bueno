@@ -1,0 +1,24 @@
+<div class="bg-background min-h-screen">
+  <div class="mt-[104px]">
+    <app-carousel [slides]="slides"></app-carousel>
+  </div>
+
+  <div class="py-12 px-4 md:px-10">
+    <h1 class="text-3xl font-bold text-center text-secondary mb-10">Descubre Nuevas Recetas</h1>
+    @if (recipes.length === 0) {
+    <div class="flex flex-col justify-center items-center text-center text-gray-500 mt-20">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p class="text-5xl text-gray-300">¡Oh, no!</p>
+      <p class="text-xl mt-2">No hay recetas disponibles actualmente.</p>
+    </div>
+    }
+
+    <div class="flex flex-wrap gap-8 justify-center">
+      @for (item of recipes; track $index) {
+      <app-recipe-card [data]="item" (onClick)="addFavorite($event)" />
+      }
+    </div>
+  </div>
+</div>

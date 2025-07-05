@@ -1,0 +1,34 @@
+<div class="md:flex md:gap-4 md:justify-around md:mb-10">
+  <div class="flex justify-center md:flex-none">
+    <div class="flex items-center relative w-96">
+      <ng-icon
+        name="heroMagnifyingGlass"
+        class="absolute left-3 w-5 h-5 text-gray-500"
+      />
+
+      <input
+        class="pl-10 pr-4 py-2 w-full border border-gray-200 rounded"
+        placeholder="Buscar por nombre..."
+        (input)="sendSearchParameter($event)"
+      />
+    </div>
+  </div>
+  <div class="flex gap-2 justify-center pt-5 md:pt-0 md:items-center">
+    <label class="hidden md:block" for="">Filtrar por :</label>
+    <select (change)="sendData($event)" class="border-none shadow rounded">
+      <option value="">Elija una opción</option>
+      <option value="category">Categoria</option>
+      <option value="difficulty">Dificultad</option>
+    </select>
+
+    <select
+      (change)="sendDataSelected($event)"
+      class="border-none shadow rounded"
+    >
+      <option value="">Elija una opción</option>
+      @for (item of data; track $index) {
+      <option [value]="item.id">{{ item.name }}</option>
+      }
+    </select>
+  </div>
+</div>

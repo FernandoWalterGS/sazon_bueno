@@ -1,0 +1,61 @@
+<div class="sm:rounded-lg">
+  <div class="h-[700px] overflow-y-auto">
+    <table class="w-full text-sm text-center text-gray-500 bg-white rounded-md">
+      <thead class="text-xs text-gray-700 uppercase">
+        <tr class="bg-black text-gray-100">
+          <th scope="col" class="px-6 py-3">Id</th>
+          <th scope="col" class="px-6 py-3">Autor</th>
+          <th scope="col" class="px-6 py-3">Receta</th>
+          <th scope="col" class="px-6 py-3">Categoria</th>
+          <th scope="col" class="px-6 py-3">Dificultad</th>
+          <th scope="col" class="px-6 py-3">Fecha</th>
+          <th scope="col" class="px-6 py-3">Hora</th>
+
+          <th scope="col" class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of recipes; track $index) {
+
+        <tr class="border-b border-gray-200 hover:bg-gray-100">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+          >
+            {{ item.id }}
+          </th>
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+          >
+            {{ item.account.name }}
+          </th>
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+          >
+            {{ item.name }}
+          </th>
+          <td class="px-6 py-4">{{ item.category.name }}</td>
+          <td class="px-6 py-4">
+            {{ item.difficulty.name }}
+          </td>
+          <td class="px-6 py-4">{{ item.createdAt | date : "shortDate" }}</td>
+          <td class="px-6 py-4">{{ item.createdAt | date : "shortTime" }}</td>
+
+          <td class="px-6 py-4">
+            <div class="flex gap-3 justify-center">
+              <ng-icon
+                name="heroTrash"
+                size="20"
+                class="text-red-500 cursor-pointer hover:opacity-80"
+                (click)="deleteRecipe(item.id)"
+              ></ng-icon>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

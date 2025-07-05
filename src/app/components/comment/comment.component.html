@@ -1,0 +1,14 @@
+<div class="flex items-start gap-4 p-4 border-b border-gray-200">
+  <img class="w-10 h-10 rounded-full" src="../../../assets/resources/user.svg" alt="{{ comment.author }}" />
+  <div class="flex-1">
+    <div class="flex items-center justify-between">
+      <div>
+        <span class="font-bold text-secondary capitalize">{{ comment.author }}</span>
+        <span class="text-sm text-gray-500 ml-2">{{ comment.createdAt | date : 'medium' }}</span>
+      </div>
+    </div>
+    <p class="mt-2 text-gray-700">
+      {{ comment.comment }}
+    </p>
+  </div>
+</div>

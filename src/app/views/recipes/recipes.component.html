@@ -1,0 +1,29 @@
+<div>
+  <div class="flex-grow mt-[104px]">
+    <app-carousel [slides]="slides"></app-carousel>
+  </div>
+
+  <div class="m-10">
+    <app-search
+      (dataEvent)="receiveData($event)"
+      (dataEventSelected)="receiveDataSelected($event)"
+      (searchDataParameter)="receiveSearchdata($event)"
+      [data]="filterData"
+    />
+
+    @if (recipes.length==0) {
+    <div class="flex flex-col justify-center items-center">
+      <p class="text-[300px] text-gray-200">:(</p>
+      <p class="text-gray-400">No hay recetas disponibles actualmente</p>
+    </div>
+
+    }
+
+    <div class="flex flex-wrap gap-8 justify-center">
+      @for (item of recipes; track $index) {
+      <app-recipe-card [data]="item" (onClick)="addFavorite($event)" />
+
+      }
+    </div>
+  </div>
+</div>

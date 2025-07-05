@@ -1,0 +1,6 @@
+.labels_inputs {
+  @apply flex flex-col my-2 gap-1;
+}
+.inputs {
+  @apply p-2 rounded-md bg-white border-none focus:outline-0 focus:bg-gray-100;
+}

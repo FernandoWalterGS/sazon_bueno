@@ -1,0 +1,13 @@
+<div class="mt-[104px] z-10">
+  <app-carousel></app-carousel>
+</div>
+
+<div class="flex gap-14 flex-wrap justify-center mt-9">
+  @for (item of recipes; track $index) {
+  <app-recipe-card
+    [isFavorite]="true"
+    imageUrl="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=640&h=391&dpr=1"
+  />
+
+  }
+</div>

@@ -1,0 +1,17 @@
+<div class="flex flex-wrap gap-32 justify-center mt-[130px]">
+  @if (favoriteList.length==0) {
+  <div>
+    <p class="text-[300px] text-gray-200">:(</p>
+    <p class="text-gray-400">No tienes favoritos actualmente</p>
+  </div>
+
+  } @for (item of favoriteList; track $index) {
+
+  <app-recipe-card
+    [data]="item"
+    [isFavorite]="true"
+    (onClick)="recibirId($event)"
+  />
+
+  }
+</div>

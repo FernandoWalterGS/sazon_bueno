@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-SemiBold.ttf");
+  font-weight: semibold;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Medium.ttf");
+  font-weight: medium;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+  font-weight: light;
+}
+
+::-webkit-scrollbar {
+  width: 3px; /* Tamaño del scroll en vertical */
+  height: 3px; /* Tamaño del scroll en horizontal */
+  display: block; /* Ocultar scroll */
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}

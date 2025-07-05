@@ -1,0 +1,56 @@
+<div class="flex items-center justify-center mt-[140px]">
+  <form
+    class="mx-1 my-10 w-full text-sm rounded-md bg-white lg:w-2/3 lg:flex"
+    [formGroup]="user"
+    (ngSubmit)="updateAccount()"
+  >
+    <div
+      class="bg-negro-sazon rounded-t-lg py-5 lg:flex flex-col items-center justify-center px-4 lg:w-2/5 lg:rounded-l-lg"
+    >
+      <div
+        class="border border-black bg-amarillo-sazon mx-auto w-40 h-40 flex justify-center items-center rounded-full"
+      >
+        <img src="assets/img/chef.png" alt="" class="h-32 cursor-pointer" />
+      </div>
+      <h1 class="flex justify-center mt-3 text-lg text-amarillo-sazon">
+        {{ email }}
+      </h1>
+    </div>
+
+    <div
+      class="bg-gray-200 flex flex-col gap-5 py-5 px-10 lg:w-full lg:px-32 lg:py-20"
+    >
+      <div class="labels_inputs">
+        <label for="">Nombre del usuario</label>
+        <input
+          type="text"
+          class="inputs"
+          formControlName="name"
+          Name="name"
+          id="name"
+          name="name"
+        />
+      </div>
+
+      <div class="labels_inputs">
+        <label for="">Nueva Contraseña</label>
+        <input
+          type="text"
+          class="inputs"
+          formControlName="password"
+          id="password"
+        />
+      </div>
+
+      <div class="flex justify-center my-5">
+        <button
+          class="p-2 w-full rounded-md bg-negro-sazon text-amarillo-sazon hover:opacity-90"
+          type="submit"
+          [disabled]="!user.valid"
+        >
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

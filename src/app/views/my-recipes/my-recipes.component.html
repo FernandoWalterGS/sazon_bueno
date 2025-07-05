@@ -1,0 +1,32 @@
+<div class="bg-background min-h-screen py-12 mt-[104px]">
+  <div class="container mx-auto px-4 md:px-10">
+    <h1 class="text-3xl font-bold text-center text-secondary mb-10">Mis Recetas</h1>
+    @if (myRecipes.length === 0) {
+      <div class="flex flex-col justify-center items-center text-center text-gray-500 mt-20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-5xl text-gray-300">¡Aún no has creado recetas!</p>
+        <p class="text-xl mt-2">Anímate a compartir tu primera receta con la comunidad.</p>
+        <a routerLink="/newRecipe" class="mt-6 inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary/90 focus:ring-4 focus:outline-none focus:ring-primary-300">
+          Crear Nueva Receta
+        </a>
+      </div>
+    }
+    <div class="flex flex-wrap gap-8 justify-center">
+      @for (item of myRecipes; track $index) {
+        <div class="flex items-start gap-4">
+          <app-recipe-card [data]="item" />
+          <div class="flex flex-col gap-2 mt-4">
+            <button (click)="editRecipe(item.id)" class="p-2 rounded-full bg-tertiary text-secondary hover:bg-tertiary/80 transition-colors shadow-sm flex items-center justify-center">
+              <ng-icon name="heroPencilSquare" size="18"></ng-icon>
+            </button>
+            <button (click)="deleteRecipe(item.id)" class="p-2 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors shadow-sm flex items-center justify-center">
+              <ng-icon name="heroTrash" size="18"></ng-icon>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

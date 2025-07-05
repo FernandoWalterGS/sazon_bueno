@@ -1,0 +1,68 @@
+<div class="bg-negro-sazon md:hidden p-3 flex justify-end">
+  <button (click)="changeActiveSidebar()">
+    <ng-icon name="bootstrapList" size="24" class="text-white" />
+  </button>
+</div>
+
+<div
+  class="h-full flex flex-col items-center justify-between md:pb-8 bg-negro-sazon text-gray-300"
+>
+  <div class="w-full md:mt-10">
+    <div class="w-full justify-center">
+      <div class="pb-16 border-b border-amarillo-sazon hidden md:block">
+        <img
+          src="../../../assets/resources/logo_oficial.svg"
+          alt="sazón"
+          class="w-36 mx-auto"
+        />
+      </div>
+
+      <div class="md:pt-10">
+        <a
+          routerLink="accounts"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="p-3 flex items-center gap-3 cursor-pointer text-white"
+        >
+          <ng-icon name="bootstrapPeopleFill" size="18" />
+          <a class="">Cuentas</a>
+        </a>
+        <a
+          routerLink="recipes"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="p-3 flex items-center gap-3 cursor-pointer text-white"
+        >
+          <ng-icon name="bootstrapBookFill" size="18" />
+          <a class="">Recetas</a>
+        </a>
+        <a
+          routerLink="category"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="p-3 flex items-center gap-3 cursor-pointer text-white"
+        >
+          <ng-icon name="bootstrapBookmarkFill" size="18" />
+          <a class="">Categorias</a>
+        </a>
+        <a
+          routerLink="difficulty"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="p-3 flex items-center gap-3 cursor-pointer text-white"
+        >
+          <ng-icon name="bootstrapArrowUpSquareFill" size="18" />
+          <a class="">dificultades</a>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="gap-3 flex items-center w-full p-3 cursor-pointer text-white hover:bg-amarillo-sazon hover:text-black transition-all border-t border-white md:border-none"
+    (click)="closeSesion()"
+  >
+    <ng-icon name="bootstrapDoorOpenFill" size="18" />
+    <p>Cerrar sesión</p>
+  </div>
+</div>

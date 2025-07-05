@@ -1,0 +1,85 @@
+<div class="bg-background min-h-screen py-16">
+  <div class="max-w-3xl mx-auto px-4">
+    <!-- Recipe Image -->
+    <div class="w-full h-80 rounded-lg shadow-lg mb-8 overflow-hidden">
+      <img [src]="data.image" alt="{{ data.name }}" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Recipe Title -->
+    <h1 class="text-5xl font-extrabold text-secondary text-center mb-6 leading-tight">{{ data.name }}</h1>
+
+    <!-- Metadata Section -->
+    <div class="bg-white p-6 rounded-lg shadow-md mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-secondary text-lg">
+        <div class="flex items-center gap-3">
+          <ng-icon name="bootstrapAlarmFill" size="24px" class="text-primary"></ng-icon>
+          <span><strong>Tiempo:</strong> {{ data.time_min }} min</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <ng-icon name="bootstrapBarChartFill" size="24px" class="text-primary"></ng-icon>
+          <span><strong>Dificultad:</strong> {{ data.difficulty | titlecase }}</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <ng-icon name="bootstrapTagFill" size="24px" class="text-primary"></ng-icon>
+          <span><strong>Categoría:</strong> {{ data.category | titlecase }}</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <ng-icon name="bootstrapPersonFillUp" size="24px" class="text-primary"></ng-icon>
+          <span><strong>Autor:</strong> {{ data.user | titlecase }}</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <ng-icon name="bootstrapStarFill" size="24px" class="text-primary"></ng-icon>
+          <span><strong>Calificación:</strong> {{ avgByRecipe | number : "1.1-1" }}</span>
+        </div>
+      </div>
+      <div class="mt-8 bg-tertiary/20 p-6 rounded-lg">
+        <h3 class="text-xl font-bold text-secondary mb-5 text-center">¡Califica esta receta!</h3>
+        <app-rating [activeStars]="ratingAccount" (sendRating)="receiveRating($event)" />
+      </div>
+    </div>
+
+    <!-- Ingredients Section -->
+    <div class="bg-white p-8 rounded-lg shadow-md mb-10">
+      <h2 class="text-3xl font-bold text-secondary mb-6 border-b border-tertiary pb-3">Ingredientes</h2>
+      <p class="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{{ data.ingredients }}</p>
+    </div>
+
+    <!-- Preparation Section -->
+    <div class="bg-white p-8 rounded-lg shadow-md mb-10">
+      <h2 class="text-3xl font-bold text-secondary mb-6 border-b border-tertiary pb-3">Preparación</h2>
+      <p class="text-gray-700 text-lg leading-relaxed whitespace-pre-line">{{ data.preparation }}</p>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="bg-white p-8 rounded-lg shadow-md">
+      <div class="flex items-center gap-4 mb-8">
+        <ng-icon name="bootstrapChatSquareText" size="28"></ng-icon>
+        <h2 class="text-3xl font-bold text-secondary">Comentarios</h2>
+      </div>
+
+      <div class="flex items-center gap-4 mb-10">
+        <input
+          type="text"
+          class="w-full rounded-lg border-gray-300 p-4 text-lg focus:ring-primary focus:border-primary"
+          placeholder="Añade un comentario..."
+          name="comment"
+          [(ngModel)]="comment"
+        />
+        <button (click)="registerComment()" class="w-12 h-12 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors flex items-center justify-center">
+          <ng-icon name="bootstrapSend" size="24"></ng-icon>
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-8">
+        @for (item of comments; track $index) {
+          <app-comment [comment]="item"></app-comment>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
