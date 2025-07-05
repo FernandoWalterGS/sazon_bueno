@@ -14,5 +14,5 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install', '-g', 'firebase-tools']
   - name: 'gcr.io/cloud-builders/npm'
-    args: ['deploy', '--project=YOUR_FIREBASE_PROJECT_ID', '--only', 'hosting']
+    args: ['deploy', '--project=sazonapp-322e1', '--only', 'hosting']
     entrypoint: 'firebase'

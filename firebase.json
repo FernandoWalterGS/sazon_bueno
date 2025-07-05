@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/sazon_del_bueno_frontend",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
