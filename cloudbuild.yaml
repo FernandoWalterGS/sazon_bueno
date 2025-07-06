@@ -10,8 +10,7 @@ steps:
   - name: 'node:20-slim' # Usar la misma imagen de Node.js
     entrypoint: 'bash'
     args:
-      - '-c'
-      - 'npm install -g firebase-tools && firebase deploy --project=sazonapp --only hosting'
+      args: [' -c', 'npm install -g firebase-tools && firebase deploy --project=sazonapp-322e1 --only hosting']
 
 options:
   logging: CLOUD_LOGGING_ONLY
