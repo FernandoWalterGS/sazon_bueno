@@ -4,7 +4,8 @@ steps:
     args: ['install']
   # Build the application for production
   - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'build:prod']
+    entrypoint: 'npx'
+    args: ['ng', 'build', '--configuration', 'production', '--aot']
   # Deploy to Firebase Hosting
   # Deploy to Firebase Hosting
   - name: 'gcr.io/cloud-builders/npm'
