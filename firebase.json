@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/sazon_del_bueno_frontend",
+    "public": "dist/sazon_del_bueno_frontend/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
