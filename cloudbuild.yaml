@@ -6,12 +6,11 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build:prod']
   # Deploy to Firebase Hosting
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['install', '-g', 'firebase-tools']
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['deploy', '--project=sazonapp', '--only', 'hosting']
-    entrypoint: 'firebase'
+  - name: 'gcr.io/cloud-builders/firebase'
+    args: [ 'deploy', '--project=sazonapp', '--only', 'hosting' ]
 
 options:
   logging: CLOUD_LOGGING_ONLY
+
+
 
