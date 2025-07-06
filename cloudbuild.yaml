@@ -16,3 +16,7 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['deploy', '--project=sazonapp-322e1', '--only', 'hosting']
     entrypoint: 'firebase'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
