@@ -9,7 +9,7 @@ steps:
   # Deploy to Firebase Hosting
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'bash'
-    args: ['-', '-c', 'npm install -g firebase-tools && firebase deploy --project=sazonapp-322e1 --only hosting']
+    args: [' -c', 'npm install -g firebase-tools && firebase deploy --project=sazonapp-322e1 --only hosting']
 
 options:
   logging: CLOUD_LOGGING_ONLY
