@@ -1,20 +1,16 @@
 steps:
-  # Step 1: Install Node.js dependencies
-  # Using the official Cloud Build npm builder
+  # Install dependencies
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
-
-  # Step 2: Build the Angular application
-  # This assumes ng is available after npm install (via node_modules/.bin)
+  # Build the application for production
   - name: 'gcr.io/cloud-builders/npm'
-    args: ['run', 'build', '--configuration', 'production', '--aot'] # Use 'npm run build' if your package.json has a build script
-    # OR if you want to directly call ng build without an npm script:
-    # args: ['./node_modules/.bin/ng', 'build', '--configuration', 'production', '--aot']
-
-  # Step 3: Deploy to Firebase Hosting
-  # Using the official Cloud Build Firebase builder
-  - name: 'gcr.io/cloud-builders/firebase'
-    args: ['deploy', '--project=sazonapp-322e1', '--only', 'hosting']
+    args: ['run', 'build:prod']
+  # Deploy to Firebase Hosting
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install', '-g', 'firebase-tools']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['deploy', '--project=sazonapp', '--only', 'hosting']
+    entrypoint: 'firebase'
 
 options:
   logging: CLOUD_LOGGING_ONLY
