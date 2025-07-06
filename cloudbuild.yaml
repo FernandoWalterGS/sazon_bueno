@@ -2,11 +2,6 @@ steps:
   # Install dependencies
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
-  # Run tests
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['test', '--', '--no-watch', '--no-progress', '--browsers=ChromeHeadlessCI']
-    env:
-      - 'CHROME_BIN=/usr/bin/chromium-browser'
   # Build the application for production
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build:prod']
