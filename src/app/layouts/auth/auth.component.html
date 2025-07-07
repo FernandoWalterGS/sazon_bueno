@@ -1,19 +1,17 @@
-<div class="h-screen flex flex-col justify-center items-center">
-  <div class="w-full bg-amarillo-sazon h-1/2"></div>
-  <div class="w-full bg-negro-sazon h-1/2"></div>
-
-  <div class="absolute">
-    <div class="bg-negro-sazon w-[330px] py-5 flex justify-center rounded-t-md">
-      <a routerLink="/">
-        <img
-          class="w-28"
-          src="../../../assets/resources/logo_oficial.svg"
-          alt=""
-        />
-      </a>
-    </div>
-    <div class="w-[330px] p-7 shadow bg-white rounded-md">
-      <router-outlet />
-    </div>
-  </div>
+<div class="h-screen md:flex">
+	<div
+		class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-amarillo-sazon to-primary i justify-around items-center hidden">
+		<div>
+			<h1 class="text-white font-bold text-4xl font-sans">Sazón del Bueno</h1>
+			<p class="text-white mt-1">El que prueba, se queda</p>
+			<button type="button" routerLink="/" class="block w-28 bg-white text-negro-sazon mt-4 py-2 rounded-2xl font-bold mb-2">Leer Más</button>
+		</div>
+		<div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+		<div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+		<div class="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+		<div class="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+	</div>
+	<div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
+    <router-outlet></router-outlet>
+	</div>
 </div>

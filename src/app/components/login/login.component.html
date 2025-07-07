@@ -1,53 +1,46 @@
-<div class="min-h-screen bg-background flex items-center justify-center">
-  <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
-    <h2 class="text-3xl font-bold text-center text-secondary mb-8">Iniciar Sesión</h2>
-    <form (ngSubmit)="onSubmit()" [formGroup]="accountLogin">
-      @if (error) {
-        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-          <span class="font-medium">{{ msg }}</span>
-        </div>
-      }
-      <div class="mb-5">
-        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-        <input
-          type="email"
-          id="email"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-          formControlName="email"
-          autocomplete="email"
-          placeholder="nombre@ejemplo.com"
-        />
-        <div *ngIf="accountLogin.get('email')?.invalid && accountLogin.get('email')?.touched" class="text-red-600 text-sm mt-1">
-          El correo no tiene el formato correcto.
-        </div>
-      </div>
-      <div class="mb-5">
-        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
-        <input
-          type="password"
-          id="password"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-          formControlName="password"
-          autocomplete="current-password"
-          placeholder="••••••••"
-        />
-        <div *ngIf="accountLogin.get('password')?.invalid && accountLogin.get('password')?.touched" class="text-red-600 text-sm mt-1">
-          La contraseña no es válida.
-        </div>
-      </div>
-      <button
-        type="submit"
-        class="w-full text-secondary bg-primary hover:bg-opacity-90 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-        [disabled]="!accountLogin.valid"
-      >
-        Iniciar Sesión
-      </button>
-      <div class="text-sm font-medium text-gray-500 mt-4 text-center">
-        ¿No tienes una cuenta? <a (click)="changePath()" class="text-primary hover:underline cursor-pointer">Crear cuenta</a>
-      </div>
-      <div class="text-sm text-gray-500 mt-2 text-center">
-        <a href="#" class="hover:underline">¿Olvidaste tu contraseña?</a>
-      </div>
-    </form>
+<form class="bg-white" (ngSubmit)="onSubmit()" [formGroup]="accountLogin">
+  <h1 class="text-gray-800 font-bold text-2xl mb-1">¡Hola de nuevo!</h1>
+  <p class="text-sm font-normal text-gray-600 mb-7">Bienvenido de nuevo</p>
+  @if (error) {
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+      <span class="font-medium">{{ msg }}</span>
+    </div>
+  }
+  <div class="mb-4 relative">
+    <input
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full pl-10 pr-2.5 py-2.5"
+      type="email"
+      id="email"
+      formControlName="email"
+      autocomplete="email"
+      placeholder="Email"
+    />
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none"
+      viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+    </svg>
   </div>
-</div>
+  <div *ngIf="accountLogin.get('email')?.invalid && accountLogin.get('email')?.touched" class="text-red-600 text-sm mt-1 mb-2">
+    El correo no tiene el formato correcto.
+  </div>
+  <div class="mb-5 relative">
+    <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full pl-10 pr-2.5 py-2.5" [type]="viewPassword ? 'text' : 'password'" id="password" formControlName="password" autocomplete="current-password" placeholder="Contraseña" />
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" viewBox="0 0 20 20"
+      fill="currentColor">
+      <path fill-rule="evenodd"
+        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+        clip-rule="evenodd" />
+    </svg>
+    <button type="button" (click)="togglePasswordVisibility()" class="absolute inset-y-0 right-0 flex items-center pr-3">
+      <ng-icon [name]="viewPassword ? 'heroEyeSlash' : 'heroEye'" size="18px" class="text-gray-500"></ng-icon>
+    </button>
+  </div>
+  <div *ngIf="accountLogin.get('password')?.invalid && accountLogin.get('password')?.touched" class="text-red-600 text-sm mt-1">
+    La contraseña no es válida.
+  </div>
+  <button type="submit" [disabled]="!accountLogin.valid" class="block w-full bg-primary mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Login</button>
+  <div class="text-center">
+    <span class="text-sm ml-2 hover:text-primary cursor-pointer">¿Olvidaste tu contraseña?</span>
+  </div>
+</form>

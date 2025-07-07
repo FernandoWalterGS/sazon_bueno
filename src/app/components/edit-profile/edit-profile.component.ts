@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -6,16 +7,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgIconComponent } from '@ng-icons/core';
+import Swal from 'sweetalert2';
 import { AccountService } from '../../services/account/account.service';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule, NgIconComponent],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.scss',
 })
 export class EditProfileComponent implements OnInit {
+  viewPassword = false;
+
+  togglePasswordVisibility() {
+    this.viewPassword = !this.viewPassword;
+  }
   constructor(
     private accountService: AccountService,
     private route: ActivatedRoute,
@@ -41,12 +49,27 @@ export class EditProfileComponent implements OnInit {
     };
     this.accountService
       .updateAccountById(this.userId, accountObject)
-      .subscribe((data) => {
-        console.log(data);
+      .subscribe({
+        next: (data) => {
+          Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: 'Perfil actualizado correctamente.',
+            confirmButtonText: 'Ok',
+          }).then(() => {
+            this.user.reset();
+            this.router.navigate(['/auth/login']);
+          });
+        },
+        error: (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Hubo un error al actualizar el perfil.',
+            confirmButtonText: 'Ok',
+          });
+        },
       });
-
-    this.user.reset();
-    this.router.navigate(['/auth/login']);
   }
   ngOnInit(): void {
     this.getProfile();

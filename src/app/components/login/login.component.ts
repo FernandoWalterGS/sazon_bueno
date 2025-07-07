@@ -7,12 +7,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgIconComponent } from '@ng-icons/core';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, NgIconComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -20,6 +21,11 @@ export class LoginComponent {
   loginError: boolean = false;
   error: boolean = false;
   msg: string = '';
+  viewPassword = false;
+
+  togglePasswordVisibility() {
+    this.viewPassword = !this.viewPassword;
+  }
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -32,14 +38,12 @@ export class LoginComponent {
   });
 
   onSubmit() {
+    if (!this.accountLogin.valid) {
+      return;
+    }
     const { email, password } = this.accountLogin.value;
-
     if (email && password) {
-      this.loginError = this.authService.loginAccount({
-        email,
-        password,
-      });
-      console.log(this.loginError);
+      this.authService.loginAccount({ email, password });
     }
   }
 

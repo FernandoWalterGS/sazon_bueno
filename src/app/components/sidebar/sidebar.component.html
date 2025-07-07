@@ -1,19 +1,20 @@
-<div class="bg-negro-sazon md:hidden p-3 flex justify-end">
+<div class="bg-primary md:hidden p-3 flex justify-end">
   <button (click)="changeActiveSidebar()">
     <ng-icon name="bootstrapList" size="24" class="text-white" />
   </button>
 </div>
 
 <div
-  class="h-full flex flex-col items-center justify-between md:pb-8 bg-negro-sazon text-gray-300"
+  class="h-full flex flex-col items-center justify-between md:pb-8 bg-primary text-white"
 >
   <div class="w-full md:mt-10">
     <div class="w-full justify-center">
       <div class="pb-16 border-b border-amarillo-sazon hidden md:block">
         <img
-          src="../../../assets/resources/logo_oficial.svg"
+          src="../../../assets/resources/logo_oficial_negro.svg"
           alt="sazón"
           class="w-36 mx-auto"
+          style="filter: invert(100%);"
         />
       </div>
 
@@ -59,7 +60,7 @@
   </div>
 
   <div
-    class="gap-3 flex items-center w-full p-3 cursor-pointer text-white hover:bg-amarillo-sazon hover:text-black transition-all border-t border-white md:border-none"
+    class="gap-3 flex items-center w-full p-3 cursor-pointer text-white hover:bg-white hover:text-negro-sazon transition-all border-t border-white md:border-none"
     (click)="closeSesion()"
   >
     <ng-icon name="bootstrapDoorOpenFill" size="18" />
