@@ -13,7 +13,7 @@ export interface Difficulty {
   providedIn: 'root',
 })
 export class DificultyService {
-  private apiUrl: string = environment.API_URL;
+  private apiUrl: string = environment.apiUrl;
   private headersApi = new HttpHeaders();
 
   constructor(private http: HttpClient) {}

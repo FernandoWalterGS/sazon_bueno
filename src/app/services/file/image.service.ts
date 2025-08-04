@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class ImageService {
-  private apiUrl: string = environment.API_URL;
+  private apiUrl: string = environment.apiUrl;
   http: HttpClient;
   private headersApi: HttpHeaders;
   constructor(http: HttpClient) {

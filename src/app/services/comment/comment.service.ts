@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 })
 export class CommentService {
   private headersApi: HttpHeaders;
-  private apiUrl: string = environment.API_URL;
+  private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {
     this.headersApi = new HttpHeaders({

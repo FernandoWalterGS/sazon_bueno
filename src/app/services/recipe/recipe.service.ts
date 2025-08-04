@@ -61,7 +61,7 @@ export interface Category {
   providedIn: 'root',
 })
 export class RecipeService {
-  private apiUrl: string = environment.API_URL;
+  private apiUrl: string = environment.apiUrl;
   private headersApi: HttpHeaders;
 
   constructor(private http: HttpClient) {
