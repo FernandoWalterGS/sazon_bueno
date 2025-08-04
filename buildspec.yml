@@ -16,7 +16,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - aws s3 sync dist/sazon_del_bueno_frontend s3://sazonbueno-assets --delete
+      - aws s3 sync dist/sazon_del_bueno_frontend/browser s3://sazonbueno-assets --delete
 
 artifacts:
   files: []
