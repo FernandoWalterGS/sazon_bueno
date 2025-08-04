@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  API_URL: 'https://api-sazondelbueno-344011199210.southamerica-east1.run.app',
+    production: true,
+    apiUrl: 'http://sazonbueno-alb-1065462952.us-east-1.elb.amazonaws.com' // Reemplazar con la URL de la API en producción
 };

@@ -9,7 +9,7 @@ import { AccountLogin } from '../account/account.service';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl: string = environment.API_URL;
+  private apiUrl: string = environment.apiUrl;
   constructor(private http: HttpClient, private router: Router) {}
 
   loginAccount(login: AccountLogin): any {

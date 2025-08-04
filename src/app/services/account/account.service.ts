@@ -19,7 +19,7 @@ export interface AccountLogin {
   providedIn: 'root',
 })
 export class AccountService {
-  private apiUrl: string = environment.API_URL;
+  private apiUrl: string = environment.apiUrl;
   private headersApi: HttpHeaders;
 
   constructor(private http: HttpClient) {

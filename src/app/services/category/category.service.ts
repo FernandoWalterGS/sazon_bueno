@@ -13,7 +13,7 @@ export interface Category {
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl: string = environment.API_URL;
+  private apiUrl: string = environment.apiUrl;
   private headersApi = new HttpHeaders();
 
   constructor(private http: HttpClient) {}
